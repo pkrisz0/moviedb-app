@@ -1,22 +1,31 @@
 import connect from "react-redux/es/connect/connect";
 import React from 'react';
-import MovieCard from './../components/MovieCard'
+import MovieCard from './../components/MovieCard';
+import fetchMovies from './../actions/movieActions'
 
-const MovieDashboard = (props) => {
-  return(
-    props.currentMovies.map(movie => (
-      <MovieCard
-        key={movie.id}
-        title={movie.title}
-        year={movie.year}
-        rate={movie.rate}
-        poster={movie.poster} />
-  )))
-};
+class MovieDashboard extends React.Component {
+  componentDidMount(){
+    this.props.dispatch(fetchMovies());
+  }
+
+  render() {
+    const { currentMovies } = this.props;
+
+    return(
+      currentMovies.map(movie => (
+        <MovieCard
+          key={movie.id}
+          title={movie.title}
+          year={movie.release_date.substring(0,4)}
+          rate={movie.vote_average}
+          poster={'https://image.tmdb.org/t/p/w300' + movie.poster_path} />
+      )))
+  }
+}
 
 const mapStateToProps = (state) => {
   return {
-    currentMovies: state.movies.movieList
+    currentMovies: state.fetchMoviesReducer.movieList,
   }
 };
 
