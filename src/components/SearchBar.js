@@ -18,7 +18,7 @@ const renderField = ({
   <div>
     <label>{label}</label>
     <div>
-      <input {...input} placeholder="Search for a movie..." type={type} style={{width: '300px', border: "none", borderBottom: "1px solid #888888"}} />
+      <input {...input} placeholder="Search for a movie..." type={type} style={{width: '300px', border: "none", borderBottom: "1px solid #888888", paddingLeft: '15px'}} />
       {touched &&
       ((error && <span style={{color: "red", marginLeft: '10px'}}>{error}</span>))}
     </div>
