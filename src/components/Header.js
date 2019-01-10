@@ -2,12 +2,14 @@ import React from 'react';
 import kubrick from "../kubrick.png";
 import SearchBar from "../containers/SearchBarContainer";
 import TopMoviesContainer from '../containers/TopMoviesContainer';
+import AdvancedSearchButton from "./AdvancedSearchButton";
 
 export default function Header(props){
     return(
       <nav className="navbar navbar-static-top" role="navigation" style={{marginBottom: 0, backgroundColor: "white", width: "100%"}}>
         <div className="navbar-header" style={{ display: '-webkit-inline-box'}}>
           <SearchBar />
+          <AdvancedSearchButton />
           <TopMoviesContainer />
         </div>
         <ul className="nav navbar-top-links navbar-right">

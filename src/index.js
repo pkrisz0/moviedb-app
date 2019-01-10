@@ -14,12 +14,10 @@ class App extends React.Component {
           <Header />
           <div id="page-wrapper" className="gray-bg" style={{minHeight: "1720px"}}>
             <div className="wrapper wrapper-content animated fadeInRight">
-              <div className="row" style={{backgroundColor: "white", padding: "25px"}}>
                 <MovieDashboardContainer />
               </div>
             </div>
-            <Footer />
-          </div>
+            {/*<Footer />*/}
           </div>
         );
     }
