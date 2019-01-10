@@ -1,7 +1,7 @@
 import connect from "react-redux/es/connect/connect";
 import React from 'react';
 import MovieCard from './../components/MovieCard';
-import fetchMovies from './../actions/movieActions'
+import fetchMovies from './../actions/movieActions';
 
 class MovieDashboard extends React.Component {
   componentDidMount(){

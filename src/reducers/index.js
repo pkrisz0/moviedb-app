@@ -1,9 +1,7 @@
 import { combineReducers } from 'redux';
 
 const initialState = {
-  movieList: [],
-  loading: false,
-  error: null
+  movieList: []
 };
 
 function fetchMoviesReducer(state = initialState, action) {
@@ -11,8 +9,11 @@ function fetchMoviesReducer(state = initialState, action) {
     case 'GET_TOP_MOVIES':
       return {
         ...state,
-        loading: false,
-        error: null,
+        movieList: action.movies
+      };
+    case 'SEARCH_MOVIES':
+      return {
+        ...state,
         movieList: action.movies
       };
     default:
