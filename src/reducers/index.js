@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 
 const initialState = {
   movieList: []
@@ -22,7 +23,8 @@ function fetchMoviesReducer(state = initialState, action) {
 }
 
 const rootReducer = combineReducers({
-  fetchMoviesReducer
+  fetchMoviesReducer,
+  form: formReducer,
 });
 
 export default rootReducer;

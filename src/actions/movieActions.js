@@ -13,9 +13,10 @@ function fetchMovies() {
   };
 }
 
-export function fetchMovieSearch() {
+export function fetchMovieSearch(query) {
+  console.log(query);
   return dispatch => {
-    return axios.get('http://api.themoviedb.org/3/search/movie?api_key='+ API_KEY + '&query=taxi')
+    return axios.get('http://api.themoviedb.org/3/search/movie?api_key='+ API_KEY + '&query=' + query)
       .then((response) =>{
         dispatch(searchMovies(response.data.results))
       })
@@ -30,7 +31,6 @@ export function getMovies(results){
 }
 
 export function searchMovies(searchResults){
-  console.log(searchResults);
   return {
     type: "SEARCH_MOVIES",
     movies: searchResults
