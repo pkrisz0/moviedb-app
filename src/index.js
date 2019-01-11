@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Header from './components/Header'
 import MovieDashboardContainer from "./containers/MovieDashboardContainer";
-import Footer from './components/Footer';
 import store from './store';
 import { Provider } from 'react-redux';
 
@@ -17,7 +16,6 @@ class App extends React.Component {
                 <MovieDashboardContainer />
               </div>
             </div>
-            {/*<Footer />*/}
           </div>
         );
     }

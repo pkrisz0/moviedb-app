@@ -2,10 +2,10 @@ import React from 'react';
 
 export default function MovieTable(props){
   let counter = 1;
-  console.log(props.movies);
+
   const movies = (
     props.movies.map(movie => (
-      <tr>
+      <tr key={movie.id}>
         <th scope="row">{counter++}</th>
         <td>{movie.id}</td>
         <td>{movie.title}</td>

@@ -3,7 +3,7 @@ import { reducer as formReducer } from 'redux-form';
 
 const initialState = {
   movieList: [],
-  view: 'table',
+  view: 'grid',
 };
 
 function fetchMoviesReducer(state = initialState, action) {

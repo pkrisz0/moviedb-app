@@ -28,7 +28,6 @@ class MovieDashboard extends React.Component {
     />;
     const content = (view === 'table') ? tableView : gridView;
 
-    console.log(view);
     return (
       <div className="row" style={{backgroundColor: "white", padding: "25px"}}>
         <ViewSelectorContainer />

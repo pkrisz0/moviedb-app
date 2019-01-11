@@ -12,7 +12,7 @@ export default function MovieCard(props)  {
         </a>
         <div className="contact-box-footer">
           <div className="m-t-xs btn-group">
-            <a href="" className="btn btn-xs btn-white"> More </a>
+            <button className="btn btn-xs btn-white"> More </button>
           </div>
         </div>
       </div>
