@@ -1,9 +1,10 @@
 import connect from "react-redux/es/connect/connect";
 import React from 'react';
-import MovieCard from './../components/MovieCard';
 import fetchMovies from './../actions/movieActions';
 import ViewSelectorContainer from './ViewSelectorContainer';
 import MovieTable from '../components/MovieTable';
+import MovieModalContainer from './MovieModalContainer';
+import MovieCard from './../components/MovieCard';
 
 class MovieDashboard extends React.Component {
   componentDidMount(){
@@ -17,10 +18,12 @@ class MovieDashboard extends React.Component {
       currentMovies.map(movie => (
         <MovieCard
           key={movie.id}
+          id={movie.id}
           title={movie.title}
           year={movie.release_date.substring(0,4)}
           rate={movie.vote_average}
-          poster={'https://image.tmdb.org/t/p/w300' + movie.poster_path} />
+          poster={'https://image.tmdb.org/t/p/w300' + movie.poster_path}
+        />
       ));
 
     const tableView = <MovieTable
@@ -32,6 +35,7 @@ class MovieDashboard extends React.Component {
       <div className="row" style={{backgroundColor: "white", padding: "25px"}}>
         <ViewSelectorContainer />
         {content}
+        <MovieModalContainer />
       </div>
     )
   }

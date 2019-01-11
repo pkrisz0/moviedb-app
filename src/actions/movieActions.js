@@ -14,11 +14,19 @@ function fetchMovies() {
 }
 
 export function fetchMovieSearch(query) {
-  console.log(query);
   return dispatch => {
     return axios.get('http://api.themoviedb.org/3/search/movie?api_key='+ API_KEY + '&query=' + query + '&include_adult=false')
       .then((response) =>{
         dispatch(searchMovies(response.data.results))
+      })
+  };
+}
+
+export function fetchMovieDetails(movieID) {
+  return dispatch => {
+    return axios.get('https://api.themoviedb.org/3/movie/' + movieID + '?api_key='+ API_KEY +'&include_adult=false')
+      .then((response) =>{
+        dispatch(getDetails(response.data))
       })
   };
 }
@@ -34,6 +42,13 @@ export function searchMovies(searchResults){
   return {
     type: "SEARCH_MOVIES",
     movies: searchResults
+  }
+}
+
+export function getDetails(results){
+  return {
+    type: "GET_DETAILS",
+    movieDetails: results
   }
 }
 
