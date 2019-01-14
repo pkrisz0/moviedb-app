@@ -52,4 +52,11 @@ export function getDetails(results){
   }
 }
 
+export function sortMovies(sortParam){
+  return {
+    type: "SORT_MOVIES",
+    sortParam
+  }
+}
+
 export default fetchMovies;

@@ -7,7 +7,7 @@ import Octicon from 'react-octicon';
 class ViewSelectorContainer extends React.Component {
   render() {
     return(
-      <div style={{width: '100%', margin: '0 15px 20px 15px'}}>
+      <div style={{height: '25px', float: 'left'}}>
         <div className="m-t-xs btn-group" style={{marginBottom: '10px'}}>
           <button className="btn btn-xs btn-white" onClick={this.props.onClickGrid}><Octicon style={{padding: '3px'}} name="versions"/></button>
           <button className="btn btn-xs btn-white" onClick={this.props.onClickTable}><Octicon style={{padding: '3px'}} name="list-unordered"/></button>

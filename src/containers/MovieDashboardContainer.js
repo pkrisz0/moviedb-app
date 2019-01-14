@@ -5,6 +5,7 @@ import ViewSelectorContainer from './ViewSelectorContainer';
 import MovieTable from '../components/MovieTable';
 import MovieModalContainer from './MovieModalContainer';
 import MovieCard from './../components/MovieCard';
+import SortByContainer from './SortByContainer';
 
 class MovieDashboard extends React.Component {
   componentDidMount(){
@@ -33,7 +34,10 @@ class MovieDashboard extends React.Component {
 
     return (
       <div className="row" style={{backgroundColor: "white", padding: "25px"}}>
-        <ViewSelectorContainer />
+        <div className='col-lg-12' style={{marginBottom: '25px'}}>
+          <ViewSelectorContainer />
+          <SortByContainer style={{float: "left"}} />
+        </div>
         {content}
         <MovieModalContainer />
       </div>

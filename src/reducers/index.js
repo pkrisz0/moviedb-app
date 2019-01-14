@@ -26,6 +26,18 @@ function fetchMoviesReducer(state = initialState, action) {
         ...state,
         movie: action.movieDetails
       };
+    case 'SORT_MOVIES':
+      return {
+        movieList: state.movieList.slice().sort((movie1, movie2) => {
+          if (action.sortParam === 'title') {
+            return movie1.title.localeCompare(movie2.title);
+          } else if (action.sortParam === 'year') {
+            return movie1.release_date < movie2.release_date ? 1 : -1;
+          } else if (action.sortParam === 'rating') {
+            return movie1.vote_average < movie2.vote_average ? 1 : -1;
+          }
+        })
+      };
     default:
       return state;
   }
@@ -70,7 +82,7 @@ const rootReducer = combineReducers({
   fetchMoviesReducer,
   form: formReducer,
   display: displayReducer,
-  movieModal: movieModalReducer
+  movieModal: movieModalReducer,
 });
 
 export default rootReducer;
