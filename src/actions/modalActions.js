@@ -10,3 +10,15 @@ export function closeMovieModal() {
     type: 'CLOSE_MOVIE_MODAL'
   };
 }
+
+export function closeAdvancedSearchModal() {
+  return {
+    type: 'CLOSE_ADVANCED_SEARCH_MODAL',
+  };
+}
+
+export function openAdvancedSearchModal() {
+  return {
+    type: 'OPEN_ADVANCED_SEARCH_MODAL',
+  };
+}

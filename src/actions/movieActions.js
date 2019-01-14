@@ -31,6 +31,35 @@ export function fetchMovieDetails(movieID) {
   };
 }
 
+export function fetchTrailer(movieID) {
+  return dispatch => {
+    return axios.get('https://api.themoviedb.org/3/movie/' + movieID + '/videos?api_key=' + API_KEY +'&include_adult=false')
+      .then((response) =>{
+        dispatch(getTrailer(response.data.results))
+      })
+  };
+}
+
+export function fetchAdvencedMovie(query) {
+  console.log(query);
+  return dispatch => {
+    return axios.get(searchUrl(query))
+      .then((response) =>{
+        dispatch(searchMovies(response.data.results))
+      })
+  };
+}
+
+function searchUrl(searchParams) {
+  let base_url = 'https://api.themoviedb.org/3/discover/movie?api_key=' + API_KEY + '&language=en-US&include_adult=false&include_video=false';
+  if (searchParams.rating) { base_url = base_url + '&vote_average.gte=' + searchParams.rating }
+  if (searchParams.year) { base_url = base_url + '&primary_release_year=' + searchParams.year }
+  if (searchParams.genre) { base_url = base_url + '&with_genres=' + searchParams.genre }
+  if (searchParams.keyword) { base_url = base_url + '&with_keywords=' + searchParams.title }
+  console.log(base_url);
+  return base_url;
+}
+
 export function getMovies(results){
   return {
     type: "GET_TOP_MOVIES",
@@ -52,11 +81,19 @@ export function getDetails(results){
   }
 }
 
+export function getTrailer(results){
+  return {
+    type: "GET_TRAILER",
+    trailer: results.find(movie => movie.type === "Trailer").key
+  }
+}
+
 export function sortMovies(sortParam){
   return {
     type: "SORT_MOVIES",
     sortParam
   }
 }
+
 
 export default fetchMovies;

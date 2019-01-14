@@ -7,6 +7,8 @@ const initialState = {
   view: 'grid',
   isOpen: false,
   movieId: undefined,
+  advancedSearchModalIsOpen: undefined,
+  trailer: undefined
 };
 
 function fetchMoviesReducer(state = initialState, action) {
@@ -25,6 +27,11 @@ function fetchMoviesReducer(state = initialState, action) {
       return {
         ...state,
         movie: action.movieDetails
+      };
+    case 'GET_TRAILER':
+      return {
+        ...state,
+        trailer: action.trailer
       };
     case 'SORT_MOVIES':
       return {
@@ -60,7 +67,7 @@ function displayReducer(state = initialState, action) {
   }
 }
 
-function movieModalReducer(state = initialState, action) {
+function modalReducer(state = initialState, action) {
   switch (action.type) {
     case 'OPEN_MOVIE_MODAL':
       return {
@@ -71,7 +78,19 @@ function movieModalReducer(state = initialState, action) {
     case 'CLOSE_MOVIE_MODAL':
       return {
         ...state,
-        isOpen: false
+        isOpen: false,
+        movie: undefined,
+        movieId: undefined
+      };
+    case 'CLOSE_ADVANCED_SEARCH_MODAL':
+      return {
+        ...state,
+        advancedSearchModalIsOpen: false,
+      };
+    case 'OPEN_ADVANCED_SEARCH_MODAL':
+      return {
+        ...state,
+        advancedSearchModalIsOpen: true
       };
     default:
       return state;
@@ -82,7 +101,7 @@ const rootReducer = combineReducers({
   fetchMoviesReducer,
   form: formReducer,
   display: displayReducer,
-  movieModal: movieModalReducer,
+  modal: modalReducer,
 });
 
 export default rootReducer;

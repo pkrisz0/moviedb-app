@@ -1,6 +1,6 @@
 import connect from "react-redux/es/connect/connect";
 import React from 'react';
-import { fetchMovieDetails } from './../actions/movieActions';
+import { fetchMovieDetails, fetchTrailer } from './../actions/movieActions';
 import { closeMovieModal } from './../actions/modalActions';
 import ReactModal from 'react-modal';
 import MovieModalContent from '../components/MovieModalContent';
@@ -20,14 +20,13 @@ class MovieModalContainer extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.movieId && this.props.movieId !== nextProps.movieId) {
       nextProps.fetchMovieDetails(nextProps.movieId);
+      // nextProps.fetchTrailer(nextProps.movieId);
     }
   }
 
 render() {
-  const { isOpen, closeMovieModal, movie } = this.props;
-
-  const modalContent = movie ? <MovieModalContent movie={movie}/> : 'Loading...';
-
+  const { isOpen, closeMovieModal, movie, trailer } = this.props;
+  const modalContent = movie  ? <MovieModalContent movie={movie} trailer={trailer}/> : 'Loading...';
   return (
       <ReactModal
         isOpen={isOpen}
@@ -45,13 +44,14 @@ render() {
 
 const mapStateToProps = (state) => {
   return {
-    isOpen: state.movieModal.isOpen,
-    movieId: state.movieModal.movieId,
-    movie: state.fetchMoviesReducer.movie
+    isOpen: state.modal.isOpen,
+    movieId: state.modal.movieId,
+    movie: state.fetchMoviesReducer.movie,
+    trailer: state.fetchMoviesReducer.trailer
   }
 };
 
 export default connect(
   mapStateToProps,
-  { closeMovieModal, fetchMovieDetails }
+  { closeMovieModal, fetchMovieDetails, fetchTrailer }
 )(MovieModalContainer);

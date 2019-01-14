@@ -3,6 +3,7 @@ import kubrick from "../kubrick.png";
 import SearchBar from "../containers/SearchBarContainer";
 import TopMoviesContainer from '../containers/TopMoviesContainer';
 import AdvancedSearchButton from "./AdvancedSearchButton";
+import AdvancedSearchModalContainer from './../containers/AdvancedSearchModalContainer';
 
 export default function Header(props){
     return(
@@ -20,6 +21,7 @@ export default function Header(props){
             </span>
           </li>
         </ul>
+        <AdvancedSearchModalContainer />
       </nav>
     );
 }
