@@ -6,6 +6,7 @@ import MovieTable from '../components/MovieTable';
 import MovieModalContainer from './MovieModalContainer';
 import MovieCard from './../components/MovieCard';
 import SortByContainer from './SortByContainer';
+import ResultsCounter from './../components/ResultsCounter';
 
 class MovieDashboard extends React.Component {
   componentDidMount(){
@@ -36,6 +37,7 @@ class MovieDashboard extends React.Component {
       <div className="row" style={{backgroundColor: "white", padding: "25px"}}>
         <div className='col-lg-12' style={{marginBottom: '25px'}}>
           <ViewSelectorContainer />
+          <ResultsCounter count={currentMovies.length}/>
           <SortByContainer style={{float: "left"}} />
         </div>
         {content}

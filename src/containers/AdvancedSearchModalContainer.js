@@ -23,6 +23,7 @@ class AdvancedSearchModalContainer extends React.Component {
         isOpen={isOpen}
         onAfterOpen={this.afterOpenModal}
         onRequestClose={closeAdvancedSearchModal}
+        closeModal={closeAdvancedSearchModal}
         style={customStyles}
         contentLabel="movie-modal"
         ariaHideApp={false}

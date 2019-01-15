@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { API_KEY } from './key'
 
-
 const TOP_MOVIES_URL = 'https://api.themoviedb.org/3/movie/top_rated?api_key='+ API_KEY + '&language=en-US&include_adult=false';
 
 function fetchMovies() {
@@ -23,6 +22,7 @@ export function fetchMovieSearch(query) {
 }
 
 export function fetchMovieDetails(movieID) {
+  console.log('https://api.themoviedb.org/3/movie/' + movieID + '?api_key='+ API_KEY +'&include_adult=false');
   return dispatch => {
     return axios.get('https://api.themoviedb.org/3/movie/' + movieID + '?api_key='+ API_KEY +'&include_adult=false')
       .then((response) =>{
@@ -41,7 +41,6 @@ export function fetchTrailer(movieID) {
 }
 
 export function fetchAdvencedMovie(query) {
-  console.log(query);
   return dispatch => {
     return axios.get(searchUrl(query))
       .then((response) =>{
@@ -55,8 +54,7 @@ function searchUrl(searchParams) {
   if (searchParams.rating) { base_url = base_url + '&vote_average.gte=' + searchParams.rating }
   if (searchParams.year) { base_url = base_url + '&primary_release_year=' + searchParams.year }
   if (searchParams.genre) { base_url = base_url + '&with_genres=' + searchParams.genre }
-  if (searchParams.keyword) { base_url = base_url + '&with_keywords=' + searchParams.title }
-  console.log(base_url);
+  if (searchParams.keyword) { base_url = base_url + '&with_keywords=' + searchParams.keyword }
   return base_url;
 }
 

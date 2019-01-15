@@ -1,25 +1,26 @@
-import React from 'react'
-import { Field, reduxForm } from 'redux-form'
-import grenreJson from './../actions/genreDictionary'
+import React from 'react';
+import { Field, reduxForm } from 'redux-form';
+import grenreJson from './../actions/genreDictionary';
+import keywords from './../actions/keywords';
 
 let AdvancedSearchForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props;
   const fieldStyle = {marginBottom: '15px', textAlign: 'center'};
-  let genres = grenreJson.genres;
-  let selection = genres.map((genre) => <option value={genre.id} key={genre.id}>{genre.name}</option>);
+  let genre_selection = grenreJson.genres.map((genre) => <option value={genre.id} key={genre.id}>{genre.name}</option>);
+  let keyword_select = keywords.keywords.map((keyword) => <option value={keyword.id} key={keyword.id}>{keyword.name}</option>);
 
   return (
     <form onSubmit={handleSubmit} className='form-group col-lg-12'>
           <div>
             <Field
+              component="select"
               name="keyword"
-              component="input"
-              type="text"
-              placeholder="Keyword"
-              className='form-control'
-              style={fieldStyle}
-            />
-          </div>
+              className="custom-select"
+              style={{textAlignLast: 'center', paddingRight: '29px', marginBottom: '15px'}}
+            >
+              <option value="" disabled>Keyword</option>
+              {keyword_select}
+            </Field>
           <div>
             <Field
               name="year"
@@ -48,7 +49,7 @@ let AdvancedSearchForm = props => {
             style={{textAlignLast: 'center', paddingRight: '29px'}}
           >
             <option value="" disabled>Genre</option>
-            {selection}
+            {genre_selection}
           </Field>
         </div>
         <div style={{textAlign: 'center', marginTop: '15px'}}>
@@ -58,6 +59,7 @@ let AdvancedSearchForm = props => {
           <button type="button" disabled={pristine || submitting} onClick={reset} className='btn btn-xs btn-white pull-right center-block'>
             Clear Values
           </button>
+        </div>
         </div>
     </form>
   )
