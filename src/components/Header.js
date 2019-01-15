@@ -7,7 +7,7 @@ import AdvancedSearchModalContainer from './../containers/AdvancedSearchModalCon
 
 export default function Header(props){
     return(
-      <nav className="navbar navbar-static-top" role="navigation" style={{marginBottom: 0, backgroundColor: "white", width: "100%"}}>
+      <nav className="navbar navbar-static-top" role="navigation" style={{marginBottom: 0, backgroundColor: "white", width: "100%", padding: '0 8px'}}>
         <div className="navbar-header" style={{ display: '-webkit-inline-box'}}>
           <SearchBar />
           <AdvancedSearchButton />
@@ -15,7 +15,7 @@ export default function Header(props){
         </div>
         <ul className="nav navbar-top-links navbar-right">
           <li>
-            <span className="m-r-sm text-muted welcome-message">
+            <span className=" text-muted welcome-message">
               THE MOVIE APP
               <img alt="stg" src={kubrick} style={{height: "20px", width: "18px", marginLeft: "10px"}}/>
             </span>

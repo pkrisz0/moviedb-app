@@ -6,7 +6,7 @@ import connect from "react-redux/es/connect/connect";
 class MovieCard extends React.Component {
   render(){
     return (
-      <div className="contact-box center-version movie-card" style={{margin: "0 15px 15px 15px", width: "240px"}} >
+      <div className="contact-box center-version movie-card" style={{margin: "15px auto", width: "240px", height: '450px'}} >
         <div style={{margin: 'auto', padding: "15px", textAlign: 'center'}}>
           <img alt="poster" style={{height: "250px", width: "200px"}} src={this.props.poster}/>
           <h3 className="m-b-xs"><strong>{this.props.title}</strong></h3>

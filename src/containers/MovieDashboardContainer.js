@@ -35,7 +35,7 @@ class MovieDashboard extends React.Component {
 
     return (
       <div className="row" style={{backgroundColor: "white", padding: "25px"}}>
-        <div className='col-lg-12' style={{marginBottom: '25px'}}>
+        <div className='col-lg-12' style={{marginBottom: '25px', borderBottom: '1px solid #e7eaec'}}>
           <ViewSelectorContainer />
           <ResultsCounter count={currentMovies.length}/>
           <SortByContainer style={{float: "left"}} />

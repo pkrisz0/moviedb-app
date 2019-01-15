@@ -12,7 +12,7 @@ const customStyles = {
     right                 : 'auto',
     bottom                : 'auto',
     transform             : 'translate(-50%, -50%)',
-    padding: '25px'
+    width                 : '610px'
   }
 };
 
@@ -20,13 +20,14 @@ class MovieModalContainer extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.movieId && this.props.movieId !== nextProps.movieId) {
       nextProps.fetchMovieDetails(nextProps.movieId);
-      // nextProps.fetchTrailer(nextProps.movieId);
+      nextProps.fetchTrailer(nextProps.movieId);
     }
   }
 
 render() {
   const { isOpen, closeMovieModal, movie, trailer } = this.props;
-  const modalContent = movie  ? <MovieModalContent movie={movie} trailer={trailer}/> : 'Loading...';
+
+  const modalContent = movie ? <MovieModalContent movie={movie} trailer={trailer}/> : 'Loading...';
   return (
       <ReactModal
         isOpen={isOpen}

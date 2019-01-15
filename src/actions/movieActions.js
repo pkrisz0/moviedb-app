@@ -22,7 +22,6 @@ export function fetchMovieSearch(query) {
 }
 
 export function fetchMovieDetails(movieID) {
-  console.log('https://api.themoviedb.org/3/movie/' + movieID + '?api_key='+ API_KEY +'&include_adult=false');
   return dispatch => {
     return axios.get('https://api.themoviedb.org/3/movie/' + movieID + '?api_key='+ API_KEY +'&include_adult=false')
       .then((response) =>{
