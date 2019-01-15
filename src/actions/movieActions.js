@@ -81,7 +81,7 @@ export function getDetails(results){
 export function getTrailer(results){
   return {
     type: "GET_TRAILER",
-    trailer: results.find(movie => movie.type === "Trailer").key
+    trailer: results.length !==0 ? results.find(movie => movie.type === "Trailer").key : undefined
   }
 }
 

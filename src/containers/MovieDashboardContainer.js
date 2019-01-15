@@ -7,6 +7,7 @@ import MovieModalContainer from './MovieModalContainer';
 import MovieCard from './../components/MovieCard';
 import SortByContainer from './SortByContainer';
 import ResultsCounter from './../components/ResultsCounter';
+import kubrick from "../kubrick.png";
 
 class MovieDashboard extends React.Component {
   componentDidMount(){
@@ -24,7 +25,7 @@ class MovieDashboard extends React.Component {
           title={movie.title}
           year={movie.release_date.substring(0,4)}
           rate={movie.vote_average}
-          poster={'https://image.tmdb.org/t/p/w300' + movie.poster_path}
+          poster={ movie.poster_path === null ? kubrick : 'https://image.tmdb.org/t/p/w300' + movie.poster_path }
         />
       ));
 
