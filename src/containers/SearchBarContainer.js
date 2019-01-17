@@ -1,18 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import SearchBar from './../components/SearchBar';
-import { fetchMovieSearch } from "../actions/movieActions";
+import SearchBar from './SearchBar';
+import { fetchMovieSearch } from '../actions/movie';
 
-let SearchBarContainer = ({ handleSearchSubmit, values }) =>
+let SearchBarContainer = ({ handleSearchSubmit }) => (
   <SearchBar
     onSubmit={values => handleSearchSubmit(values.searchTerm)}
-  />;
+  />
+);
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   handleSearchSubmit: value => dispatch(fetchMovieSearch(value)),
 });
 
 export default SearchBarContainer = connect(
   null,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(SearchBarContainer);

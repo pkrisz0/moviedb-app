@@ -1,63 +1,60 @@
-import connect from "react-redux/es/connect/connect";
 import React from 'react';
-import fetchMovies from './../actions/movieActions';
-import ViewSelectorContainer from './ViewSelectorContainer';
-import MovieTable from '../components/MovieTable';
+import connect from 'react-redux/es/connect/connect';
+
+import MovieTable from './MovieTable';
+import MovieCard from './MovieCard';
+import ResultsCounter from '../components/ResultsCounter';
+
+import { fetchMovies } from '../actions/movie';
+
 import MovieModalContainer from './MovieModalContainer';
-import MovieCard from './../components/MovieCard';
+import ViewSelectorContainer from './ViewSelectorContainer';
 import SortByContainer from './SortByContainer';
-import ResultsCounter from './../components/ResultsCounter';
-import kubrick from "../kubrick.png";
+
+import kubrick from '../helpers/kubrick.png';
 
 class MovieDashboard extends React.Component {
-  componentDidMount(){
-    this.props.dispatch(fetchMovies());
+  componentDidMount() {
+    this.props.dispatch(fetchMovies()); // eslint-disable-line react/destructuring-assignment
   }
 
   render() {
     const { currentMovies, view } = this.props;
 
-    const gridView =
-      currentMovies.map(movie => (
-        <MovieCard
-          key={movie.id}
-          id={movie.id}
-          title={movie.title}
-          year={movie.release_date.substring(0,4)}
-          rate={movie.vote_average}
-          poster={ movie.poster_path === null ? kubrick : 'https://image.tmdb.org/t/p/w300' + movie.poster_path }
-        />
-      ));
+    // grid view could be a MovieGrid component
+    const gridView = currentMovies.map(movie => (
+      <MovieCard
+        key={movie.id}
+        id={movie.id}
+        title={movie.title}
+        year={movie.release_date.substring(0, 4)}
+        rate={movie.vote_average}
+        poster={movie.poster_path === null ? kubrick : `https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+      />
+    ));
 
-    const tableView = <MovieTable
-       movies={currentMovies}
-    />;
-    const content = (view === 'table') ? tableView : gridView;
+    const tableView = <MovieTable movies={currentMovies} />;
 
     return (
-      <div className="row" style={{backgroundColor: "white", padding: "25px"}}>
-        <div className='col-lg-12' style={{marginBottom: '25px', borderBottom: '1px solid #e7eaec'}}>
+      <div className="row" style={{ backgroundColor: 'white', padding: '25px' }}>
+        <div className="col-lg-12" style={{ marginBottom: '25px', borderBottom: '1px solid #e7eaec' }}>
           <ViewSelectorContainer />
-          <ResultsCounter count={currentMovies.length}/>
-          <SortByContainer style={{float: "left"}} />
+          <ResultsCounter count={currentMovies.length} />
+          <SortByContainer style={{ float: 'left' }} />
         </div>
-        {content}
+        {(view === 'table') ? tableView : gridView}
         <MovieModalContainer />
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    currentMovies: state.fetchMoviesReducer.movieList,
-    view: state.display.view,
-  }
-};
+const mapStateToProps = state => ({
+  currentMovies: state.movies.movieList,
+  view: state.display.view,
+});
 
-const MovieDashboardContainer = connect(
+export default connect(
   mapStateToProps,
-  null
+  null,
 )(MovieDashboard);
-
-export default MovieDashboardContainer;

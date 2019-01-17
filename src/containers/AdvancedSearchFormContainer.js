@@ -1,18 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import AdvancedSearchForm from './../components/AdvancedSearchForm';
-import {fetchAdvencedMovie} from "../actions/movieActions";
+import AdvancedSearchForm from './AdvancedSearchForm';
+import { fetchAdvencedMovie } from '../actions/movie';
 
-let AdvancedSearchFormContainer = ({ handleSubmit, values }) =>
+let AdvancedSearchFormContainer = ({ handleSubmit }) => (
   <AdvancedSearchForm
     onSubmit={values => handleSubmit(values)}
-  />;
+  />
+);
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   handleSubmit: value => dispatch(fetchAdvencedMovie(value)),
 });
 
 export default AdvancedSearchFormContainer = connect(
   null,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(AdvancedSearchFormContainer);
