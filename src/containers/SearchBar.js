@@ -10,7 +10,7 @@ const renderField = ({
   label,
   type,
   meta: { error, touched },
-}) => (
+}: Props) => (
   <div>
     { /* eslint-disable-next-line */ }
     <label>{label}</label>

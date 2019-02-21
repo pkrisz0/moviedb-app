@@ -1,10 +1,17 @@
-import { SHOW_GRID, SHOW_TABLE } from '../actions/display';
+// @flow
 
-const initialState = {
+import { SHOW_GRID, SHOW_TABLE } from '../actions/display';
+import type { DisplayAction } from '../actions/display';
+
+type State = {
+  +view: string,
+}
+
+const initialState: State = {
   view: 'grid',
 };
 
-export default (state = initialState, action) => {
+export default (state: State = initialState, action: DisplayAction): State => {
   switch (action.type) {
     case SHOW_GRID:
       return {

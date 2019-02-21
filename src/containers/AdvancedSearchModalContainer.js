@@ -1,5 +1,5 @@
 import connect from 'react-redux/es/connect/connect';
-import React from 'react';
+import * as React from 'react';
 import ReactModal from 'react-modal';
 import { closeAdvancedSearchModal } from '../actions/modal';
 import AdvancedSearchFormContainer from './AdvancedSearchFormContainer';
@@ -21,7 +21,6 @@ class AdvancedSearchModalContainer extends React.Component {
     return (
       <ReactModal
         isOpen={isOpen}
-        onAfterOpen={this.afterOpenModal}
         onRequestClose={closeSearchModal}
         closeModal={closeSearchModal}
         style={customStyles}

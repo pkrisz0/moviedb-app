@@ -1,6 +1,8 @@
-import React from 'react';
+// @flow
 
-export default ({ count }) => (
+import * as React from 'react';
+
+export default ({ count }: { count: number }) => (
   <div style={{ width: '100px', display: 'inline-block', margin: '10px' }}>
     <p>
       <strong>{count}</strong>

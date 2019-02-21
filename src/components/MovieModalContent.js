@@ -1,8 +1,12 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import kubrick from '../helpers/kubrick.png';
 
+type genre = { id: number, name: string };
+type movieType = { imdb_id: string, backdrop_path: string, overview: string, release_date: string, vote_average: number, genres: Array<genre>, title: string };
 
-export default function MovieModalContent({ movie, trailer }) {
+export default function MovieModalContent({ movie, trailer }: { movie: movieType, trailer?: string }) {
   const imdb = `https://imdb.com/${movie.imdb_id}`;
   const embeddedVideo = trailer === undefined ? '' : (
     <iframe

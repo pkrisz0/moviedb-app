@@ -1,4 +1,6 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import ReactModal from 'react-modal';
 
@@ -17,7 +19,21 @@ const customStyles = {
   },
 };
 
-class MovieModalContainer extends React.Component {
+type genre = { id: number, name: string };
+type movieType = { imdb_id: string, backdrop_path: string, overview: string, release_date: string, vote_average: number, genres: Array<genre>, title: string };
+
+type MMContainerProps = {
+  isOpen: boolean,
+  closeModal: () => any,
+  movie: movieType,
+  trailer: string,
+  getMovie: (?number) => any,
+  movieId: ?number,
+  getTrailer: (?number) => any,
+  afterOpenModal: () => void,
+};
+
+class MovieModalContainer extends React.Component<MMContainerProps> {
   componentWillReceiveProps({ movieId, getMovie, getTrailer }) {
     if (movieId && this.props.movieId !== movieId) { // eslint-disable-line
       getMovie(movieId);
@@ -34,7 +50,6 @@ class MovieModalContainer extends React.Component {
     return (
       <ReactModal
         isOpen={isOpen}
-        onAfterOpen={this.afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="movie-modal"

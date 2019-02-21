@@ -1,14 +1,24 @@
+// @flow
+
 import {
   OPEN_MOVIE_MODAL, CLOSE_MOVIE_MODAL, CLOSE_ADVANCED_SEARCH_MODAL, OPEN_ADVANCED_SEARCH_MODAL,
 } from '../actions/modal';
 
-const initialState = {
+import type { ModalAction } from '../actions/modal';
+
+type State = {
+  +movieModalIsOpen: boolean,
+  +movieId: ?number,
+  +advancedSearchModalIsOpen: boolean
+}
+
+const initialState: State = {
   movieModalIsOpen: false,
   movieId: undefined,
-  advancedSearchModalIsOpen: undefined,
+  advancedSearchModalIsOpen: false,
 };
 
-export default (state = initialState, action) => {
+export default (state: State = initialState, action: ModalAction): State => {
   switch (action.type) {
     case OPEN_MOVIE_MODAL:
       return {
