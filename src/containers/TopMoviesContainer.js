@@ -1,5 +1,6 @@
-import React from 'react';
-import connect from 'react-redux/es/connect/connect';
+// @flow
+
+import * as React from 'react';import connect from 'react-redux/es/connect/connect';
 
 import { fetchMovies } from '../actions/movie';
 

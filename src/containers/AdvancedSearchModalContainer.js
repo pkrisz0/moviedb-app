@@ -1,8 +1,15 @@
-import connect from 'react-redux/es/connect/connect';
+// @flow
+
 import * as React from 'react';
+import connect from 'react-redux/es/connect/connect';
 import ReactModal from 'react-modal';
 import { closeAdvancedSearchModal } from '../actions/modal';
 import AdvancedSearchFormContainer from './AdvancedSearchFormContainer';
+
+type Props = {
+  isOpen: boolean,
+  closeSearchModal: () => void,
+};
 
 const customStyles = {
   content: {
@@ -15,7 +22,7 @@ const customStyles = {
   },
 };
 
-class AdvancedSearchModalContainer extends React.Component {
+class AdvancedSearchModalContainer extends React.Component<Props> {
   render() {
     const { isOpen, closeSearchModal } = this.props;
     return (

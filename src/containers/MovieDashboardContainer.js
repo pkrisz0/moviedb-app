@@ -1,3 +1,5 @@
+// @flow
+
 import * as React from 'react';
 import connect from 'react-redux/es/connect/connect';
 
@@ -13,33 +15,45 @@ import SortByContainer from './SortByContainer';
 
 import kubrick from '../helpers/kubrick.png';
 
-class MovieDashboard extends React.Component {
+type Dispatch = any => any;
+
+type Props = {
+  currentMovies?: Array<Object>,
+  view: string,
+  dispatch: Dispatch
+};
+
+class MovieDashboard extends React.Component<Props> {
   componentDidMount() {
     this.props.dispatch(fetchMovies()); // eslint-disable-line react/destructuring-assignment
   }
 
   render() {
     const { currentMovies, view } = this.props;
-
+    var gridView = undefined;
     // grid view could be a MovieGrid component
-    const gridView = currentMovies.map(movie => (
-      <MovieCard
-        key={movie.id}
-        id={movie.id}
-        title={movie.title}
-        year={movie.release_date.substring(0, 4)}
-        rate={movie.vote_average}
-        poster={movie.poster_path === null ? kubrick : `https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-      />
-    ));
+    if (currentMovies) {
+       gridView = currentMovies.map(movie => (
+        <MovieCard
+          key={movie.id}
+          id={movie.id}
+          title={movie.title}
+          year={movie.release_date.substring(0, 4)}
+          rate={movie.vote_average}
+          poster={movie.poster_path === null ? kubrick : `https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+        />
+      ));
+    }
 
     const tableView = <MovieTable movies={currentMovies} />;
+
+    const count = currentMovies ? currentMovies.length : 0;
 
     return (
       <div className="row" style={{ backgroundColor: 'white', padding: '25px' }}>
         <div className="col-lg-12" style={{ marginBottom: '25px', borderBottom: '1px solid #e7eaec' }}>
           <ViewSelectorContainer />
-          <ResultsCounter count={currentMovies.length} />
+          <ResultsCounter count={count} />
           <SortByContainer style={{ float: 'left' }} />
         </div>
         {(view === 'table') ? tableView : gridView}

@@ -1,4 +1,6 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import connect from 'react-redux/es/connect/connect';
 
 import { openMovieModal } from '../actions/modal';

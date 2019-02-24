@@ -1,5 +1,6 @@
-import React from 'react';
-import { connect } from 'react-redux';
+// @flow
+
+import * as React from 'react';import { connect } from 'react-redux';
 import SearchBar from './SearchBar';
 import { fetchMovieSearch } from '../actions/movie';
 

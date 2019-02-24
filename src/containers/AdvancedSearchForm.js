@@ -1,5 +1,6 @@
-import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+// @flow
+
+import * as React from 'react';import { Field, reduxForm } from 'redux-form';
 import genreJson from '../helpers/genreDictionary';
 import keywords from '../helpers/keywords';
 

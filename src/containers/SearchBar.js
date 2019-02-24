@@ -1,16 +1,25 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import { reduxForm, Field } from 'redux-form';
 
 const validate = values => (!values.searchTerm
   ? { searchTerm: 'How dare you...' }
   : {});
 
+type Props = {
+  input: ?Object,
+  label: ?string,
+  type: ?string,
+  meta: { error: ?string, touched: ?boolean }
+};
+
 const renderField = ({
   input,
   label,
   type,
   meta: { error, touched },
-}: Props) => (
+}: Props) : React.Element<*> => (
   <div>
     { /* eslint-disable-next-line */ }
     <label>{label}</label>

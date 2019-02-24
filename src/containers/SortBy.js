@@ -1,5 +1,6 @@
-import React from 'react';
-import { reduxForm, Field } from 'redux-form';
+// @flow
+
+import * as React from 'react';import { reduxForm, Field } from 'redux-form';
 import Octicon from 'react-octicon';
 
 let SortBy = ({ handleChange, handleSubmit }) => (

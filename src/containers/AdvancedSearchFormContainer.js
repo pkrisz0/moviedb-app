@@ -1,4 +1,6 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import { connect } from 'react-redux';
 import AdvancedSearchForm from './AdvancedSearchForm';
 import { fetchAdvencedMovie } from '../actions/movie';
