@@ -69,35 +69,35 @@ export function sortMovies(sortParam: string): MovieAction {
   };
 }
 
-export function fetchMovies() {
+export function fetchMovies(): ThunkAction {
   return (dispatch: Dispatch) => axios.get(TOP_MOVIES_URL)
     .then((response) => {
       dispatch(getMovies(response.data.results));
     });
 }
 
-export function fetchMovieSearch(query: string) {
+export function fetchMovieSearch(query: string): ThunkAction {
   return (dispatch: Dispatch) => axios.get(FETCH_MOVIE_SEARCH_URL + query)
     .then((response) => {
       dispatch(searchMovies(response.data.results));
     });
 }
 
-export function fetchMovieDetails(movieID: number) {
+export function fetchMovieDetails(movieID: number): ThunkAction {
   return(dispatch: Dispatch) => axios.get(`https://api.themoviedb.org/3/movie/${movieID}?api_key=${API_KEY}&include_adult=false`)
     .then((response) => {
       dispatch(getDetails(response.data));
     });
 }
 
-export function fetchTrailer(movieID: number) {
+export function fetchTrailer(movieID: number): ThunkAction {
   return (dispatch: Dispatch) => axios.get(`https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=${API_KEY}&include_adult=false`)
     .then((response) => {
       dispatch(getTrailer(response.data.results));
     });
 }
 
-export function fetchAdvencedMovie(query: queryType) {
+export function fetchAdvencedMovie(query: queryType): ThunkAction {
   return (dispatch: Dispatch) => axios.get(searchUrl(query))
     .then((response) => {
       dispatch(searchMovies(response.data.results));

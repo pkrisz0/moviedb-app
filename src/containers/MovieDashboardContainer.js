@@ -15,17 +15,15 @@ import SortByContainer from './SortByContainer';
 
 import kubrick from '../helpers/kubrick.png';
 
-type Dispatch = any => any;
-
 type Props = {
   currentMovies?: Array<Object>,
   view: string,
-  dispatch: Dispatch
+  fetchMovies: () => Array<Object>;
 };
 
 class MovieDashboard extends React.Component<Props> {
   componentDidMount() {
-    this.props.dispatch(fetchMovies()); // eslint-disable-line react/destructuring-assignment
+    this.props.fetchMovies(); // eslint-disable-line react/destructuring-assignment
   }
 
   render() {
@@ -70,5 +68,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  null,
+  { fetchMovies },
 )(MovieDashboard);
